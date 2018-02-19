@@ -1,22 +1,33 @@
 import React, {Component} from 'react';
 
-import ToggleButton from './components/checkers/ToggleButton';
-import CheckBox from './components/checkers/CheckBox';
-import Layout from './components/Layout';
-import Form from './components/Form';
+import MainForm from './containers/MainForm';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import rootReducer from './store/reducers';
+import { devToolsEnhancer } from 'redux-devtools-extension';
+
+const store = createStore(rootReducer, devToolsEnhancer());
 
 class App extends Component {
 
-    state = {
-        ch: true
-    };
 
-    clicked = () => {
-        this.setState({ch: !this.state.ch});
-    }
+
 
     render() {
         return (
+            <Provider store={store}>
+                <MainForm/>
+            </Provider>
+/*
+
+
+ state = {
+ ch: true
+ };
+
+ clicked = () => {
+ this.setState({ch: !this.state.ch});
+ };
 
             <Layout>
                 <Form>
