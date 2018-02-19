@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Layout from '../../components/Layout';
 import CheckBoxesForm from '../CheckBoxes';
 import TogglesForm from '../Toggles';
+import TextInput from '../TextInput';
+import Selector from '../Selector';
 
 
 class MainForm extends Component {
@@ -11,6 +13,8 @@ class MainForm extends Component {
             <Layout>
                 <CheckBoxesForm/>
                 <TogglesForm/>
+                <TextInput/>
+                <Selector/>
             </Layout>
         )
     }

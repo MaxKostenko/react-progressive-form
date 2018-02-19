@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import CheckMark from './CheckMark';
 
-const CheckBox = styled.label`
+const CheckBox = styled.div`
     display: block;
     position: relative;
     padding-left: 35px;

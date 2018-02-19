@@ -1,5 +1,5 @@
 import React from 'react';
-import ToggleButton from '../../components/checkers/ToggleButton';
+import ToggleButton from '../../components/ToggleButton';
 import PropTypes from 'prop-types';
 
 function ToggleBoxList(props) {

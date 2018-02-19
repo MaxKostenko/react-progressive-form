@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
-import checkBoxesReducer from './checkBoxes';
-import togglesReducer from './toggles';
+import checkBoxes from './checkBoxes';
+import toggles from './toggles';
+import textInput from './textInput';
+import selector from './selector';
 
 export default combineReducers({
-    checkBoxes: checkBoxesReducer,
-    toggles: togglesReducer
+    checkBoxes,
+    toggles,
+    textInput,
+    selector
 });

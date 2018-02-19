@@ -8,7 +8,7 @@ const valuesList = ['B1', 'B2'];
 
 class Toggles extends Component {
 
-    togglesChangeEvent = (event) => {
+    handleChange = (event) => {
         if (event.target.checked) {
             this.props.setToggle(event.target.value);
         }
@@ -20,7 +20,7 @@ class Toggles extends Component {
                 <ToggleBoxList
                     values={valuesList}
                     currentValue={this.props.currentValue}
-                    onChange={this.togglesChangeEvent}
+                    onChange={this.handleChange}
                 />
             </Form>
         )

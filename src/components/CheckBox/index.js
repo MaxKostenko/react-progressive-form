@@ -1,9 +1,9 @@
 import React from 'react';
 import StyledCheckBox from './CheckBox';
 import StyledCheckMark from './CheckMark';
-import StyledFormCheckerElement from '../FormCheckerElement';
-import StyledFormCheckerControl from '../FormCheckerControl';
-import StyledFormCheckerText from '../FormCheckerText';
+import StyledFormCheckerElement from '../Form/FormCheckerElement';
+import StyledFormCheckerControl from '../Form/FormCheckerControl';
+import StyledFormCheckerText from '../Form/FormCheckerText';
 import PropTypes from 'prop-types';
 
 

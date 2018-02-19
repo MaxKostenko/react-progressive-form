@@ -9,7 +9,7 @@ const valuesList = ['A1', 'A2'];
 
 class CheckBoxes extends Component {
 
-    checkBoxChangeEvent = (event) => {
+    handleChange = (event) => {
         if (event.target.checked) {
             this.props.setCheckbox(event.target.value);
         } else {
@@ -23,7 +23,7 @@ class CheckBoxes extends Component {
                 <CheckBoxList
                     values={valuesList}
                     checkedValues={this.props.checkedValues}
-                    onChange={this.checkBoxChangeEvent}
+                    onChange={this.handleChange}
                 />
             </Form>
         )
