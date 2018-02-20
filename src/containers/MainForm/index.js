@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import Layout from '../../components/Layout';
+import Submit from '../../components/Submit';
 import * as formsActions from '../../store/actions/FormsActions';
 import {connect} from 'react-redux';
 import FormsList from './FormsList';
+
 
 
 class MainForm extends Component {
@@ -11,10 +13,11 @@ class MainForm extends Component {
         return (
             <Layout>
                 <FormsList
-                    list={this.props.data.visible}
-                    forms={this.props.data.forms}
+                    list={this.props.visible}
+                    forms={this.props.forms}
                     actions={this.props.formsActions}
                 />
+                {this.props.isVisibleSubmit ? <Submit disabled={this.props.isDisabledSubmit} /> : ''}
             </Layout>
         );
     }
@@ -22,9 +25,7 @@ class MainForm extends Component {
 }
 
 const mapStateToProps = state => {
-    return {
-        data: state
-    };
+    return state;
 };
 
 const mapDispatchToProps = dispatch => {
