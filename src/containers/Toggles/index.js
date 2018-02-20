@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import Form from '../../components/Form';
-import {connect} from 'react-redux';
-import * as actions from '../../store/actions/toggles';
 import ToggleBoxList from './ToggleBoxList';
 
 const valuesList = ['B1', 'B2'];
@@ -19,7 +17,7 @@ class Toggles extends Component {
             <Form>
                 <ToggleBoxList
                     values={valuesList}
-                    currentValue={this.props.currentValue}
+                    currentValue={this.props.values.b}
                     onChange={this.handleChange}
                 />
             </Form>
@@ -27,16 +25,4 @@ class Toggles extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        currentValue: state.forms.toggles.values.b,
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        setToggle: (name) => dispatch(actions.setToggle(name))
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Toggles);
+export default Toggles;

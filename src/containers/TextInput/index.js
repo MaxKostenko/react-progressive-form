@@ -3,8 +3,7 @@ import Form from '../../components/Form';
 import ButtonHolder from '../../components/Form/FormButtonHolder';
 import Button from '../../components/Button';
 import StyledTextInput from '../../components/TextInput';
-import * as actions from '../../store/actions/textInput';
-import {connect} from 'react-redux';
+
 
 class TextInput extends Component {
 
@@ -36,10 +35,4 @@ class TextInput extends Component {
 
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        checkText: (value) => dispatch(actions.checkText(value))
-    };
-};
-
-export default connect(null, mapDispatchToProps)(TextInput);
+export default TextInput;

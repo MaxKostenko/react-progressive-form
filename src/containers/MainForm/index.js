@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Layout from '../../components/Layout';
-import * as actions from '../../store/actions';
+import * as formsActions from '../../store/actions/FormsActions';
 import {connect} from 'react-redux';
 import FormsList from './FormsList';
 
@@ -8,13 +8,15 @@ import FormsList from './FormsList';
 class MainForm extends Component {
 
     render() {
-
-
         return (
             <Layout>
-                <FormsList list={this.props.data.visible} />
+                <FormsList
+                    list={this.props.data.visible}
+                    forms={this.props.data.forms}
+                    actions={this.props.formsActions}
+                />
             </Layout>
-        )
+        );
     }
 
 }
@@ -27,13 +29,18 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 
-    const actionList = {};
-    for (let key in actions) {
-        actionList[key] = (val) => dispatch(actions[key](val))
+    const dispatchedActions = {};
+    const fAction = {...formsActions.default};
+
+    for (let formKey in fAction) {
+        dispatchedActions[formKey] = {};
+        for (let actionKey in fAction[formKey]) {
+            dispatchedActions[formKey][actionKey] = (val) => dispatch(fAction[formKey][actionKey](val))
+        }
     }
 
     return {
-        actions: actionList
+        formsActions: dispatchedActions
     };
 };
 

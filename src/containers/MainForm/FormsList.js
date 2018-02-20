@@ -12,9 +12,14 @@ const forms = {
 };
 
 export default function FormsList(props) {
+
     return props.list.map((key) => {
+
         return forms[key]({
-            key: key
+            key: key,
+            ...props.forms[key],
+            ...props.actions[key]
         });
+
     })
 }

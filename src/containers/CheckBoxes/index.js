@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-
 import Form from '../../components/Form';
-import {connect} from 'react-redux';
-import * as actions from '../../store/actions/checkBoxes';
 import CheckBoxList from './CheckBoxList';
 
 const valuesList = ['A1', 'A2'];
@@ -22,7 +19,7 @@ class CheckBoxes extends Component {
             <Form>
                 <CheckBoxList
                     values={valuesList}
-                    checkedValues={this.props.checkedValues}
+                    checkedValues={this.props.values.a}
                     onChange={this.handleChange}
                 />
             </Form>
@@ -30,17 +27,4 @@ class CheckBoxes extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        checkedValues: state.forms.checkBoxes.values.a,
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        setCheckbox: (name) => dispatch(actions.setCheckbox(name)),
-        unsetCheckbox: (name) => dispatch(actions.unsetCheckbox(name))
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CheckBoxes);
+export default CheckBoxes;
