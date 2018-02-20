@@ -29,7 +29,7 @@ const initialState = {
 function setFormsVisibility(state) {
     const visibleState = [...state.visible];
 
-    if(state.forms[visibleState[visibleState.length-1]].isValid) {
+    if(state.forms[visibleState[visibleState.length-1]].isValid && formsReducersKeysList.length) {
         visibleState.push(formsReducersKeysList.shift())
     }
 
