@@ -32,7 +32,7 @@ class Selector extends Component {
 
 const mapStateToProps = state => {
     return {
-        currentValue: state.selector.values.c,
+        currentValue: state.forms.selector.values.c,
     };
 };
 

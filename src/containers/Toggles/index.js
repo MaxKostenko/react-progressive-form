@@ -29,7 +29,7 @@ class Toggles extends Component {
 
 const mapStateToProps = state => {
     return {
-        currentValue: state.toggles.values.b,
+        currentValue: state.forms.toggles.values.b,
     };
 };
 

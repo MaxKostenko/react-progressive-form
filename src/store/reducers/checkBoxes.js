@@ -9,6 +9,7 @@ const initialState = {
 
 function setCheckbox(state = initialState, action) {
     return {
+        ...state,
         isValid: true,
         values: {
             ...state.values,
@@ -24,6 +25,7 @@ function unsetCheckbox(state = initialState, action) {
     const checkedValues = state.values.a.filter((value) => value !== action.checkboxName);
 
     return {
+        ...state,
         isValid: Boolean(checkedValues.length),
         values: {
             ...state.values,

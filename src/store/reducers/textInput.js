@@ -9,6 +9,7 @@ const initialState = {
 
 function setTextCheckingResult(state = initialState, action) {
     return {
+        ...state,
         isValid: action.isValid,
         values: {
             ...state.values,

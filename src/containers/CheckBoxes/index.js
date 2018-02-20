@@ -32,7 +32,7 @@ class CheckBoxes extends Component {
 
 const mapStateToProps = state => {
     return {
-        checkedValues: state.checkBoxes.values.a,
+        checkedValues: state.forms.checkBoxes.values.a,
     };
 };
 

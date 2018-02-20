@@ -9,6 +9,7 @@ const initialState = {
 
 function setActiveToggle(state = initialState, action) {
     return {
+        ...state,
         isValid: true,
         values: {
             ...state.values,

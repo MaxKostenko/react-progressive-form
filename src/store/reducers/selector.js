@@ -9,6 +9,7 @@ const initialState = {
 
 function setActiveSelect(state = initialState, action) {
     return {
+        ...state,
         isValid: true,
         values: {
             ...state.values,
