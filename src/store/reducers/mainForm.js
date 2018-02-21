@@ -5,6 +5,7 @@ import textInput from './textInput';
 import selector from './selector';
 import * as formActions from '../actions/actionFormTypes';
 import * as actions from '../actions/actionMainFormTypes';
+import {requestStatuses} from '../../utils';
 
 const formsReducersList = {
     checkBoxes,
@@ -65,14 +66,14 @@ const reducer = (state = initialState, action) => {
 
     switch (action.type) {
         case actions.SEND_ALL_FORM:
-            newState.requestState = 'IN_PROGRESS';
+            newState.requestState = requestStatuses.inProgress;
             break;
         case actions.REQUEST_SUCCESSFUL:
-            newState.requestState = 'SUCCESSFUL';
+            newState.requestState = requestStatuses.success;
             break;
         case actions.REQUEST_FAILED:
-            newState.requestState = 'FAILED';
-            newState.errorMessage = action.message
+            newState.requestState = requestStatuses.failed;
+            newState.errorMessage = action.message;
             break;
         default:
             if (formActions[action.type]) {

@@ -6,6 +6,7 @@ import * as formsActions from '../../store/actions/FormsActions';
 import * as actions from '../../store/actions/mainForm';
 import {connect} from 'react-redux';
 import FormsList from './FormsList';
+import {requestStatuses} from '../../utils';
 
 class MainForm extends Component {
 
@@ -21,21 +22,20 @@ class MainForm extends Component {
                     forms={this.props.forms}
                     actions={this.props.formsActions}
                 />
-                {this.props.requestState === 'FAILED' ? (
+                {this.props.requestState === requestStatuses.failed ? (
                     <FormError>{this.props.errorMessage}</FormError>
                 ) : ''}
 
                 {this.props.isVisibleSubmit ? (
                     <Submit
                         onClick={this.handleSubmit}
-                        disabled={this.props.isDisabledSubmit || this.props.requestState === 'IN_PROGRESS'}
+                        disabled={this.props.isDisabledSubmit || this.props.requestState === requestStatuses.inProgress}
                         requestState={this.props.requestState}
                     />
                 ) : ''}
             </Layout>
         );
     }
-
 }
 
 const createChildFormsActions = dispatch => {
