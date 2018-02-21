@@ -5,8 +5,8 @@ import StyledSubmitHolder from './SubmitHolder';
 function Submit(props) {
     return (
         <StyledSubmitHolder>
-            <StyledSubmit disabled={props.disabled}>
-                Submit
+            <StyledSubmit {...props}>
+                {props.requestState === 'IN_PROGRESS' ? 'Loading' : 'Submit'}
             </StyledSubmit>
         </StyledSubmitHolder>
     );

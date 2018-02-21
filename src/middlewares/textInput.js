@@ -1,4 +1,4 @@
-import {checkIt, submitIt} from  '../apis/api';
+import {checkIt} from  '../apis/api';
 import * as actionTypes from '../store/actions/actionTypes';
 
 const formMiddleware = store => next => action => {

@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 
 import MainForm from './containers/MainForm';
 import {Provider} from 'react-redux';
-import {createStore, applyMiddleware, compose} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import rootReducer from './store/reducers';
 import {composeWithDevTools} from 'redux-devtools-extension';
-import formMiddleware from './middlewares/middleware';
+import textInputMiddleware from './middlewares/textInput';
+import mainFformMiddleware from './middlewares/mainForm';
 
 const store = createStore(rootReducer, composeWithDevTools(
-        applyMiddleware(formMiddleware)
+        applyMiddleware(textInputMiddleware, mainFformMiddleware)
     )
 );
 

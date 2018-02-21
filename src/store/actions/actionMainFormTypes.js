@@ -1,0 +1,5 @@
+export const SEND_ALL_FORM = 'SEND_ALL_FORM';
+
+export const REQUEST_SUCCESSFUL = 'REQUEST_SUCCESSFUL';
+
+export const REQUEST_FAILED = 'REQUEST_FAILED';
