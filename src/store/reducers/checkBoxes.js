@@ -1,6 +1,6 @@
 import * as actionTypes from '../actions/actionTypes';
 
-const initialState = {
+export const initialState = {
     values: {
         a: []
     },
@@ -8,6 +8,9 @@ const initialState = {
 };
 
 function setCheckbox(state = initialState, action) {
+    if(state.values.a.includes(action.checkboxName))
+        return state;
+
     return {
         ...state,
         isValid: true,
