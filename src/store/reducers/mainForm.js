@@ -14,16 +14,7 @@ const formsReducersList = {
     selector
 };
 
-
-
 const formsReducersKeysList = Object.keys(formsReducersList);
-
-function isSubmitDisabled(forms) {
-    for(let key in forms) {
-        if(!forms[key].isValid) return true;
-    }
-    return false
-}
 
 const initialState = {
     forms: {},
@@ -34,25 +25,44 @@ const initialState = {
     errorMessage: ''
 };
 
+export function makeNextFormVisible(state) {
+    const visibleState = [...state.visible];
+    visibleState.push(formsReducersKeysList[visibleState.length]);
+
+    return {
+        ...state,
+        visible: visibleState
+    }
+}
+
+export function validateMainForm(state) {
+
+    let isSubmitDisabled = false;
+    for(let key in state.forms) {
+        if(!state.forms[key].isValid) {
+            isSubmitDisabled = true;
+            break;
+        }
+    }
+
+    return {
+        ...state,
+        isVisibleSubmit: true,
+        isDisabledSubmit: isSubmitDisabled
+    }
+}
+
 //This reducer calculate list forms that should be visible
 function setFormsVisibility(state) {
 
     if(state.forms[state.visible[state.visible.length-1]].isValid) {
         if(state.visible.length < formsReducersKeysList.length) {
-            const visibleState = [...state.visible];
-            visibleState.push(formsReducersKeysList[visibleState.length]);
-            return {
-                ...state,
-                visible: visibleState
-            }
+            return makeNextFormVisible(state);
         } else {
-            return {
-                ...state,
-                isVisibleSubmit: true,
-                isDisabledSubmit: isSubmitDisabled(state.forms)
-            }
+            return validateMainForm(state);
         }
     }
+
     return state;
 }
 
@@ -81,6 +91,7 @@ const reducer = (state = initialState, action) => {
             }
 
     }
+
     return newState;
 };
 
