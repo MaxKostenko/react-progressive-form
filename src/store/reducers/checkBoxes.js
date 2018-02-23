@@ -4,7 +4,8 @@ export const initialState = {
     values: {
         a: []
     },
-    isValid: false
+    isValid: false,
+    wasValid: false
 };
 
 function setCheckbox(state = initialState, action) {
@@ -14,6 +15,7 @@ function setCheckbox(state = initialState, action) {
     return {
         ...state,
         isValid: true,
+        wasValid: true,
         values: {
             ...state.values,
             a: [

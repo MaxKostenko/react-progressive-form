@@ -6,6 +6,10 @@ import * as actions from '../../store/actions/mainForm';
 import {connect} from 'react-redux';
 import FormsList from './FormsList';
 import {requestStatuses} from '../../utils';
+import CheckBoxesForm from '../CheckBoxes';
+import TogglesForm from '../Toggles';
+import TextInput from '../TextInput';
+import Selector from '../Selector';
 
 class MainForm extends Component {
 
@@ -16,9 +20,13 @@ class MainForm extends Component {
     render() {
         return (
             <Layout>
-                <FormsList
-                    list={this.props.visible}
-                />
+                <FormsList visibleStepsCount={this.props.visibleStepsCount} >
+                    <CheckBoxesForm />
+                    <TogglesForm/>
+                    <TextInput/>
+                    <Selector/>
+                </FormsList>
+
                 {this.props.requestState === requestStatuses.failed ? (
                     <FormError>{this.props.errorMessage}</FormError>
                 ) : ''}

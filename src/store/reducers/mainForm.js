@@ -7,18 +7,18 @@ import * as formActions from '../actions/actionFormTypes';
 import * as actions from '../actions/actionMainFormTypes';
 import {requestStatuses} from '../../utils';
 
-const formsReducersList = {
+const formsReducersMap = {
     checkBoxes,
     toggles,
     textInput,
     selector
 };
 
-const formsReducersKeysList = Object.keys(formsReducersList);
+const formsReducersKeysList = Object.keys(formsReducersMap);
 
 const initialState = {
     forms: {},
-    visible: [formsReducersKeysList[0]],
+    visibleStepsCount: 1,
     isVisibleSubmit: false,
     isDisabledSubmit: true,
     requestState: null,
@@ -26,12 +26,9 @@ const initialState = {
 };
 
 export function makeNextFormVisible(state) {
-    const visibleState = [...state.visible];
-    visibleState.push(formsReducersKeysList[visibleState.length]);
-
     return {
         ...state,
-        visible: visibleState
+        visibleStepsCount: state.visibleStepsCount+1,
     }
 }
 
@@ -55,8 +52,13 @@ export function validateMainForm(state) {
 //This reducer calculate list forms that should be visible
 function setFormsVisibility(state) {
 
-    if(state.forms[state.visible[state.visible.length-1]].isValid) {
-        if(state.visible.length < formsReducersKeysList.length) {
+    const stepCount = formsReducersKeysList.reduce((accumulator, subFormKey) => {
+        if(state.forms[subFormKey].wasValid) return accumulator+1;
+        return accumulator;
+    }, 0);
+
+    if(stepCount === state.visibleStepsCount) {
+        if(state.visibleStepsCount < formsReducersKeysList.length) {
             return makeNextFormVisible(state);
         } else {
             return validateMainForm(state);
@@ -70,7 +72,7 @@ const reducer = (state = initialState, action) => {
 
     const newState = {
         ...state,
-        forms: combineReducers(formsReducersList)(state.forms, action),
+        forms: combineReducers(formsReducersMap)(state.forms, action),
         errorMessage: '',
         requestState: null
     };

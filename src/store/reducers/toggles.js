@@ -4,13 +4,15 @@ const initialState = {
     values: {
         b: null
     },
-    isValid: false
+    isValid: false,
+    wasValid: false,
 };
 
 function setActiveToggle(state = initialState, action) {
     return {
         ...state,
         isValid: true,
+        wasValid: true,
         values: {
             ...state.values,
             b: action.toggleName

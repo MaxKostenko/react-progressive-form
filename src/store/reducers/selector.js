@@ -4,13 +4,15 @@ const initialState = {
     values: {
         c: ''
     },
-    isValid: false
+    isValid: false,
+    wasValid: false
 };
 
 function setActiveSelect(state = initialState, action) {
     return {
         ...state,
         isValid: true,
+        wasValid: true,
         values: {
             ...state.values,
             c: action.selectValue

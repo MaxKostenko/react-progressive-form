@@ -4,12 +4,14 @@ const initialState = {
     values: {
         text: ''
     },
-    isValid: false
+    isValid: false,
+    wasValid: false
 };
 
 function setTextCheckingResult(state = initialState, action) {
     return {
         ...state,
+        wasValid: action.isValid ? true : state.wasValid,
         isValid: action.isValid,
         values: {
             ...state.values,
