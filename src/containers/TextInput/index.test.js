@@ -1,4 +1,4 @@
-import TextInput from './index';
+import {TextInput} from './index';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

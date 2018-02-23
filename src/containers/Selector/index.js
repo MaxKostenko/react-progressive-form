@@ -12,7 +12,7 @@ function valueListRender(values) {
     })
 }
 
-class Selector extends Component {
+export class Selector extends Component {
     handleChange = (event) => {
         this.props.setSelectedValue(event.target.value);
     };

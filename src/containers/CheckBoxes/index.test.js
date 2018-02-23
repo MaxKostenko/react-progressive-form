@@ -1,11 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CheckBoxes from './index';
+import {CheckBoxes} from './index';
 
 const props = {
-  values: {
-    a: ['B34']
-  }
+  checkedValues: ['B34']
 };
 
 it('CheckBoxes renders without crashing', () => {

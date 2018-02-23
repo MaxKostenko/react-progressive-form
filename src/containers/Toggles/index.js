@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 const valuesList = ['B1', 'B2'];
 
-class Toggles extends Component {
+export class Toggles extends Component {
 
     handleChange = (event) => {
         if (event.target.checked) {

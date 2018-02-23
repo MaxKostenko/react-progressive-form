@@ -6,7 +6,7 @@ import StyledTextInput from '../../components/TextInput';
 import * as actions from '../../store/actions/textInput';
 import {connect} from 'react-redux';
 
-class TextInput extends Component {
+export class TextInput extends Component {
 
     state = {
         text: ''

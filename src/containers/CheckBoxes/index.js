@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 const valuesList = ['A1', 'A2'];
 
-class CheckBoxes extends Component {
+export class CheckBoxes extends Component {
 
     handleChange = (event) => {
         if (event.target.checked) {
