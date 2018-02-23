@@ -71,7 +71,8 @@ const reducer = (state = initialState, action) => {
     const newState = {
         ...state,
         forms: combineReducers(formsReducersList)(state.forms, action),
-        errorMessage: ''
+        errorMessage: '',
+        requestState: null
     };
 
     switch (action.type) {

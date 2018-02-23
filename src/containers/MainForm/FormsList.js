@@ -17,8 +17,6 @@ export default function FormsList(props) {
 
         return forms[key]({
             key: key,
-            ...props.forms[key],
-            ...props.actions[key]
         });
 
     })
