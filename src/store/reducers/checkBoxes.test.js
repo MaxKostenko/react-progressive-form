@@ -10,7 +10,8 @@ const firstExpectedState = {
     values: {
         a: ['A1']
     },
-    isValid: true
+    isValid: true,
+    wasValid: true
 };
 
 const firstCheckboxWasUncheckedAction = {
@@ -22,7 +23,8 @@ const secondExpectedState = {
     values: {
         a: []
     },
-    isValid: false
+    isValid: false,
+    wasValid: true
 };
 
 const secondCheckboxWasCheckedAfterFirstAction = {
@@ -34,7 +36,8 @@ const thirdExpectedState = {
     values: {
         a: ['A1', 'A2']
     },
-    isValid: true
+    isValid: true,
+    wasValid: true
 };
 
 
