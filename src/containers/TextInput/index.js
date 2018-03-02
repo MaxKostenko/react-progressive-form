@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import Form from '../../components/Form';
 import ButtonHolder from '../../components/Form/FormButtonHolder';
+import Loader from '../../components/Form/FormButtonHolderLoader'
 import Button from '../../components/Button';
 import StyledTextInput from '../../components/TextInput';
 import * as actions from '../../store/actions/textInput';
 import {connect} from 'react-redux';
+import {requestStatuses} from '../../utils';
 
 export class TextInput extends Component {
 
@@ -25,7 +27,12 @@ export class TextInput extends Component {
             <Form>
                 <StyledTextInput value={this.state.text} onChange={this.handleChange} />
                 <ButtonHolder>
-                    <Button onClick={this.handleCheck}>
+                    {this.props.requestState === requestStatuses.inProgress ? (
+                        <Loader>Loading...</Loader>
+                    ) : ''}
+                    <Button
+                        disabled={this.props.isDisabledButtonCheck}
+                        onClick={this.handleCheck}>
                         Check Text
                     </Button>
                 </ButtonHolder>
@@ -33,13 +40,10 @@ export class TextInput extends Component {
         );
 
     }
-
 }
 
 const mapStateToProps = state => {
-    return {
-        currentValue: state.forms.selector.values.c,
-    };
+    return state.forms.textInput;
 };
 
 const mapDispatchToProps = dispatch => {

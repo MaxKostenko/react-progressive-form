@@ -8,7 +8,8 @@ const initialState = {
     isValid: false,
     wasValid: false,
     requestState: null,
-    errorMessage: ''
+    errorMessage: '',
+    isDisabledButtonCheck: false
 };
 
 function setTextCheckingResult(state = initialState, action) {
@@ -19,7 +20,9 @@ function setTextCheckingResult(state = initialState, action) {
         values: {
             ...state.values,
             text: action.text
-        }
+        },
+        requestState: action.isValid ? requestStatuses.success : requestStatuses.failed,
+        isDisabledButtonCheck: false
     };
 }
 
@@ -27,22 +30,26 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.TXT_INPUT_SET_MESSAGE:
             return setTextCheckingResult(state, action);
+
         case actionTypes.TXT_INPUT_SEND_IN_PROGRESS:
             return {
                 ...state,
-                requestState: requestStatuses.inProgress
+                requestState: requestStatuses.inProgress,
+                isValid: false,
+                isDisabledButtonCheck: true
             };
-        case actionTypes.TXT_INPUT_REQUEST_SUCCESSFUL:
+        case actionTypes.SEND_ALL_FORM:
             return {
                 ...state,
-                requestState: requestStatuses.success
+                isDisabledButtonCheck: true
             };
-        case actionTypes.TXT_INPUT_REQUEST_FAILED:
+        case actionTypes.REQUEST_FAILED:
+        case actionTypes.REQUEST_SUCCESSFUL:
             return {
                 ...state,
-                requestState: requestStatuses.failed,
-                errorMessage: action.message
+                isDisabledButtonCheck: false
             };
+
         default:
             return state;
     }
